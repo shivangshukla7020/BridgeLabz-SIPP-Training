@@ -1,0 +1,127 @@
+Day 2 Pseudo-code Solutions
+
+--------------------------------------------------
+1. Java OOPs
+--------------------------------------------------
+
+Easy – Traffic Signal Simulation
+
+enum TrafficLight { RED, GREEN, YELLOW }
+
+class TrafficSignal {
+    TrafficLight current;
+
+    void switchLight() {
+        if (current == RED) set GREEN;
+        else if (current == GREEN) set YELLOW;
+        else if (current == YELLOW) set RED;
+    }
+
+    void runSimulation() {
+        loop forever {
+            print current light
+            wait few seconds
+            switchLight()
+        }
+    }
+}
+
+Moderate – Smart Farming System
+
+abstract class Crop {
+    abstract int waterRequired();
+    abstract void harvest();
+}
+
+class Rice extends Crop {
+    int waterRequired() -> return 50;
+    void harvest() -> print "Harvesting rice";
+}
+
+class Wheat extends Crop {
+    int waterRequired() -> return 30;
+    void harvest() -> print "Harvesting wheat";
+}
+
+--------------------------------------------------
+2. Data Structures & Algorithms
+--------------------------------------------------
+
+Easy – Online Quiz Timer
+
+class QuizTimer {
+    int[] timeSlots;   // circular array
+    int currentIndex;
+
+    void startTimer() {
+        while quiz running {
+            if timeSlots[currentIndex] < warningThreshold
+                print "Hurry up!";
+            move to next index circularly
+        }
+    }
+}
+
+Moderate – Job Scheduler
+
+class Job {
+    int deadline;
+    int duration;
+}
+
+class JobScheduler {
+    PriorityQueue<Job> pq; // priority by earliest deadline
+
+    void addJob(Job j) -> pq.add(j);
+    void executeJobs() {
+        while !pq.empty() {
+            Job j = pq.remove();
+            process job j
+        }
+    }
+}
+
+--------------------------------------------------
+3. Collections, Generics, Streams
+--------------------------------------------------
+
+Easy – Online Store Cart System
+
+class Item {
+    String name;
+    double price;
+}
+
+class Cart {
+    List<Item> items;
+
+    <T extends Item> double totalPrice(List<T> list) {
+        double total = 0;
+        for (T item : list)
+            total += item.price;
+        return total;
+    }
+}
+
+Moderate – Hospital Department Mapper
+
+class Doctor {
+    String name;
+    String specialization;
+}
+
+class Hospital {
+    Map<String, List<Doctor>> departmentMap;
+
+    void addDoctor(String dept, Doctor doc) {
+        if departmentMap has dept
+            add doc to list
+        else
+            create new list and add doc
+    }
+
+    void showDepartments() {
+        for each entry in departmentMap
+            print dept and doctors
+    }
+}
