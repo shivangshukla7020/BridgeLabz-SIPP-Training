@@ -1,0 +1,169 @@
+Day 4 Pseudo-code Solutions
+
+--------------------------------------------------
+1. Java OOPs
+--------------------------------------------------
+
+Moderate – Banking Portal
+
+class Account {
+    String accountNumber;
+    double balance;
+
+    void deposit(double amount) {
+        balance += amount;
+    }
+
+    void withdraw(double amount) {
+        // generic withdrawal (to be overridden)
+    }
+}
+
+class SavingAccount extends Account {
+    @Override
+    void withdraw(double amount) {
+        if (balance - amount >= 500) {
+            balance -= amount;
+            print "Withdrawn " + amount;
+        } else {
+            print "Insufficient balance. Minimum 500 required";
+        }
+    }
+}
+
+class CurrentAccount extends Account {
+    @Override
+    void withdraw(double amount) {
+        if (balance >= amount) {
+            balance -= amount;
+            print "Withdrawn " + amount;
+        } else {
+            print "Overdraft not allowed";
+        }
+    }
+}
+
+Difficult – Vehicle Rental System
+
+interface Rentable {
+    void rent();
+}
+
+abstract class Vehicle implements Rentable {
+    String model;
+    int year;
+}
+
+class Car extends Vehicle {
+    void rent() -> print "Car rented: " + model;
+}
+
+class Bike extends Vehicle {
+    void rent() -> print "Bike rented: " + model;
+}
+
+class VehicleFactory {
+    static Vehicle createVehicle(String type) {
+        if (type == "car") return new Car();
+        if (type == "bike") return new Bike();
+        return null;
+    }
+}
+
+--------------------------------------------------
+2. Data Structures & Algorithms
+--------------------------------------------------
+
+Moderate – Flight Price Analyzer
+
+class Flight {
+    String flightNumber;
+    double price;
+    int duration; // in minutes
+}
+
+class FlightComparator implements Comparator<Flight> {
+    int compare(Flight f1, Flight f2) {
+        if (f1.price == f2.price) return f1.duration - f2.duration;
+        return f1.price - f2.price;
+    }
+}
+
+class FlightSorter {
+    void mergeSort(Flight[] flights, Comparator cmp) {
+        // standard merge sort implementation using cmp.compare
+    }
+}
+
+Difficult – Crime Prediction Heatmap
+
+class Zone {
+    String name;
+    List<Zone> neighbors;
+    int crimeCount;
+}
+
+class City {
+    Map<String, Zone> zones;
+
+    void dfs(Zone z, Set<Zone> visited) {
+        if (visited contains z) return;
+        visited.add(z);
+
+        if (z.crimeCount > threshold) {
+            print "High risk zone: " + z.name;
+        }
+
+        for each neighbor in z.neighbors:
+            dfs(neighbor, visited);
+    }
+}
+
+--------------------------------------------------
+3. Collections, Generics, Streams
+--------------------------------------------------
+
+Moderate – College Course Registration
+
+class Student {
+    String name;
+    int rollNo;
+}
+
+class Course {
+    String code;
+    String title;
+}
+
+class College {
+    Map<Course, List<Student>> registrations;
+
+    void register(Course c, Student s) {
+        registrations.putIfAbsent(c, new ArrayList<>());
+        registrations.get(c).add(s);
+    }
+
+    void display() {
+        for each course in registrations.keySet():
+            print course.title + " -> " + registrations.get(course);
+    }
+}
+
+Difficult – Digital Wallet Transactions Report
+
+class Transaction {
+    String merchant;
+    double amount;
+}
+
+class ReportGenerator {
+    void generate(List<Transaction> txs) {
+        Map<String, List<Transaction>> grouped =
+            txs.stream().collect(Collectors.groupingBy(t -> t.merchant));
+
+        grouped.forEach((merchant, list) -> {
+            double total = list.stream().mapToDouble(t -> t.amount).sum();
+            print merchant + " total = " + total;
+        });
+    }
+}
