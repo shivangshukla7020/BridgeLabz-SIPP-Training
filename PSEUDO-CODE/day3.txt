@@ -1,0 +1,136 @@
+Day 3 Pseudo-code Solutions
+
+--------------------------------------------------
+1. Java OOPs
+--------------------------------------------------
+
+Moderate – Food Delivery System
+
+class Customer {
+    String name;
+    String address;
+}
+
+class Restaurant {
+    String name;
+    String location;
+}
+
+class DeliveryBoy {
+    String name;
+    String vehicle;
+}
+
+class Order {
+    Customer customer;
+    Restaurant restaurant;
+    DeliveryBoy deliveryBoy;
+
+    void placeOrder() {
+        print "Order placed by " + customer.name + " from " + restaurant.name
+    }
+
+    void deliverOrder() {
+        print deliveryBoy.name + " is delivering order to " + customer.address
+    }
+}
+
+Moderate – Medical Record Manager
+
+interface Searchable {
+    void search(String query);
+}
+
+interface Printable {
+    void print();
+}
+
+class LabReport implements Searchable, Printable {
+    void search(String query) -> print "Searching lab report for " + query
+    void print() -> print "Printing lab report"
+}
+
+class Prescription implements Searchable, Printable {
+    void search(String query) -> print "Searching prescription for " + query
+    void print() -> print "Printing prescription"
+}
+
+--------------------------------------------------
+2. Data Structures & Algorithms
+--------------------------------------------------
+
+Moderate – Patient Record Hashing
+
+class Patient {
+    int id;
+    String name;
+    String illness;
+}
+
+class PatientManager {
+    HashMap<Integer, Patient> records;
+
+    void addPatient(Patient p) -> records.put(p.id, p);
+    void updatePatient(Patient p) -> records.put(p.id, p);
+    void removePatient(int id) -> records.remove(id);
+    Patient getPatient(int id) -> return records.get(id);
+}
+
+Moderate – Maze Solver Bot
+
+class MazeSolver {
+    int[][] maze;  // 0 = path, 1 = wall
+    boolean[][] visited;
+
+    boolean solve(int x, int y) {
+        if (x,y is exit) return true
+        if (x,y is invalid or visited) return false
+
+        mark visited[x][y] = true
+        if solve(x+1,y) or solve(x-1,y) or solve(x,y+1) or solve(x,y-1)
+            return true
+
+        backtrack
+        return false
+    }
+}
+
+--------------------------------------------------
+3. Collections, Generics, Streams
+--------------------------------------------------
+
+Moderate – Library Book Filter
+
+class Book {
+    String title;
+    int year;
+    double rating;
+}
+
+class Library {
+    List<Book> books;
+
+    void filterBooks() {
+        books.stream()
+            .filter(b -> b.year > 2015)
+            .filter(b -> b.rating > 4.5)
+            .forEach(print each book);
+    }
+}
+
+Moderate – Payment Processor
+
+class Transaction<T> {
+    T data;
+    double amount;
+
+    void process() {
+        print "Processing transaction of " + amount + " with data: " + data
+    }
+}
+
+class PaymentProcessor {
+    <T> void handleTransaction(Transaction<T> tx) {
+        tx.process();
+    }
+}
