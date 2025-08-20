@@ -1,6 +1,6 @@
 Day 3 Pseudo-code Solutions
 
-Moderate – Food Delivery System
+Food Delivery System
 
 class Customer {
     String name;
@@ -31,7 +31,7 @@ class Order {
     }
 }
 
-Moderate – Medical Record Manager
+Medical Record Manager
 
 interface Searchable {
     void search(String query);
@@ -52,7 +52,7 @@ class Prescription implements Searchable, Printable {
 }
 -
 
-Moderate – Patient Record Hashing
+Patient Record Hashing
 
 class Patient {
     int id;
@@ -69,7 +69,7 @@ class PatientManager {
     Patient getPatient(int id) -> return records.get(id);
 }
 
-Moderate – Maze Solver Bot
+Maze Solver Bot
 
 class MazeSolver {
     int[][] maze;  // 0 = path, 1 = wall
@@ -89,7 +89,7 @@ class MazeSolver {
 }
 
 
-Moderate – Library Book Filter
+Library Book Filter
 
 class Book {
     String title;
@@ -108,7 +108,7 @@ class Library {
     }
 }
 
-Moderate – Payment Processor
+Payment Processor
 
 class Transaction<T> {
     T data;
