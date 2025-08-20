@@ -1,8 +1,5 @@
 Day 4 Pseudo-code Solutions
 
---------------------------------------------------
-1. Java OOPs
---------------------------------------------------
 
 Moderate – Banking Portal
 
@@ -70,9 +67,6 @@ class VehicleFactory {
     }
 }
 
---------------------------------------------------
-2. Data Structures & Algorithms
---------------------------------------------------
 
 Moderate – Flight Price Analyzer
 
@@ -119,9 +113,6 @@ class City {
     }
 }
 
---------------------------------------------------
-3. Collections, Generics, Streams
---------------------------------------------------
 
 Moderate – College Course Registration
 

@@ -1,9 +1,5 @@
 Day 3 Pseudo-code Solutions
 
---------------------------------------------------
-1. Java OOPs
---------------------------------------------------
-
 Moderate – Food Delivery System
 
 class Customer {
@@ -54,10 +50,7 @@ class Prescription implements Searchable, Printable {
     void search(String query) -> print "Searching prescription for " + query
     void print() -> print "Printing prescription"
 }
-
---------------------------------------------------
-2. Data Structures & Algorithms
---------------------------------------------------
+-
 
 Moderate – Patient Record Hashing
 
@@ -95,9 +88,6 @@ class MazeSolver {
     }
 }
 
---------------------------------------------------
-3. Collections, Generics, Streams
---------------------------------------------------
 
 Moderate – Library Book Filter
 

@@ -1,8 +1,5 @@
 Day 2 Pseudo-code Solutions
 
---------------------------------------------------
-1. Java OOPs
---------------------------------------------------
 
 Easy – Traffic Signal Simulation
 

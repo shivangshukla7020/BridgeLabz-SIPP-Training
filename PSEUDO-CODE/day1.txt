@@ -1,75 +1,70 @@
-Regex Practice Problems - Pseudo Code Solutions (Java style)
 
-Note: These are pseudo-codes written in a Java-like way, but not exact compilable code.
-They're meant to show how you might approach writing regex solutions in Java.
-
-----------------------------------------------------
 1. Validate a Username
-----------------------------------------------------
+
 boolean validateUsername(String username){
     String regex = "^[A-Za-z][A-Za-z0-9_]{4,14}$";
     return username.matches(regex);
 }
 
-----------------------------------------------------
+
 2. Validate a License Plate Number
-----------------------------------------------------
+
 boolean validatePlate(String plate){
     String regex = "^[A-Z]{2}[0-9]{4}$";
     return plate.matches(regex);
 }
 
-----------------------------------------------------
+
 3. Validate a Hex Color Code
-----------------------------------------------------
+
 boolean validateHex(String color){
     String regex = "^#[0-9A-Fa-f]{6}$";
     return color.matches(regex);
 }
 
-----------------------------------------------------
+
 4. Extract All Email Addresses
-----------------------------------------------------
+
 List<String> extractEmails(String text){
     String regex = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}";
     // Use Matcher to find all
     return all matches;
 }
 
-----------------------------------------------------
+
 5. Extract Capitalized Words
-----------------------------------------------------
+
 List<String> extractCapitalized(String text){
     String regex = "\b[A-Z][a-zA-Z]*\b";
     return all matches;
 }
 
-----------------------------------------------------
+
 6. Extract Dates (dd/mm/yyyy)
-----------------------------------------------------
+
 List<String> extractDates(String text){
     String regex = "\b\d{2}/\d{2}/\d{4}\b";
     return all matches;
 }
 
-----------------------------------------------------
+
 7. Extract Links
-----------------------------------------------------
+
 List<String> extractLinks(String text){
     String regex = "https?://[^\s]+";
     return all matches;
 }
 
-----------------------------------------------------
+
 8. Replace Multiple Spaces with Single
-----------------------------------------------------
+
 String normalizeSpaces(String text){
     return text.replaceAll("\s+", " ");
 }
 
-----------------------------------------------------
+
 9. Censor Bad Words
-----------------------------------------------------
+
 String censorWords(String text, List<String> badWords){
     for(String word : badWords){
         text = text.replaceAll(word, "****");
@@ -77,18 +72,18 @@ String censorWords(String text, List<String> badWords){
     return text;
 }
 
-----------------------------------------------------
+
 10. Validate an IP Address
-----------------------------------------------------
+
 boolean validateIP(String ip){
     String regex = "^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}"
                    + "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
     return ip.matches(regex);
 }
 
-----------------------------------------------------
+
 11. Validate Credit Card (Visa or MasterCard)
-----------------------------------------------------
+
 String validateCard(String card){
     if(card.matches("^4\d{15}$")){
         return "Visa";
@@ -99,33 +94,33 @@ String validateCard(String card){
     }
 }
 
-----------------------------------------------------
+
 12. Extract Programming Language Names
-----------------------------------------------------
+
 List<String> extractLanguages(String text){
     String regex = "\b(Java|Python|JavaScript|Go)\b";
     return all matches;
 }
 
-----------------------------------------------------
+
 13. Extract Currency Values
-----------------------------------------------------
+
 List<String> extractCurrency(String text){
     String regex = "(\$\d+\.\d{2}|\d+\.\d{2})";
     return all matches;
 }
 
-----------------------------------------------------
+
 14. Find Repeating Words
-----------------------------------------------------
+
 List<String> findRepeats(String text){
     String regex = "\b(\w+)\s+\1\b";
     return unique matches of group(1);
 }
 
-----------------------------------------------------
+
 15. Validate SSN
-----------------------------------------------------
+
 boolean validateSSN(String ssn){
     String regex = "^\d{3}-\d{2}-\d{4}$";
     return ssn.matches(regex);
