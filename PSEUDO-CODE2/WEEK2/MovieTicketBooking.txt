@@ -1,0 +1,57 @@
+CLASS Ticket
+    ATTRIBUTES:
+        movie_name
+        seat_number
+        price
+        booking_status (Booked/Cancelled)
+
+    METHOD show_ticket()
+        PRINT "Movie:", movie_name, " Seat:", seat_number, " Status:", booking_status
+
+-----------------------------------------------------
+
+CLASS Theatre
+    ATTRIBUTES:
+        name
+        movies_schedule (list of movies + timings)
+        available_seats (list of seat numbers)
+
+    METHOD issue_ticket(movie, seat, customer)
+        IF seat is in available_seats
+            CREATE new Ticket(movie, seat, price, "Booked")
+            REMOVE seat from available_seats
+            PRINT "Ticket booked successfully for", customer.name
+            RETURN Ticket
+        ELSE
+            PRINT "Sorry, seat not available"
+
+    METHOD cancel_ticket(ticket)
+        ticket.booking_status = "Cancelled"
+        ADD ticket.seat_number back to available_seats
+        PRINT "Ticket cancelled successfully. Seat freed:", ticket.seat_number
+
+-----------------------------------------------------
+
+CLASS Customer
+    ATTRIBUTES:
+        name
+        booked_tickets (list)
+
+    METHOD book_ticket(theatre, movie, seat)
+        ticket = theatre.issue_ticket(movie, seat, self)
+        IF ticket exists
+            ADD ticket to booked_tickets
+
+    METHOD cancel_ticket(theatre, ticket)
+        theatre.cancel_ticket(ticket)
+        REMOVE ticket from booked_tickets
+
+-----------------------------------------------------
+
+MAIN PROGRAM:
+    CREATE Theatre "PVR" with movies ["Avengers: Endgame at 6PM"] and seats ["A10","A11","A12"]
+
+    CREATE Customer "Ravi"
+
+    Ravi.book_ticket(PVR, "Avengers: Endgame", "A12")
+    Ravi.cancel_ticket(PVR, Ravi.booked_tickets[0])

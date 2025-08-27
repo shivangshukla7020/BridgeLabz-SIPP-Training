@@ -1,0 +1,40 @@
+CLASS User
+    ATTRIBUTES:
+        username
+        password
+
+    METHOD login()
+        PRINT "Generic user login... (will be customized by child classes)"
+
+-----------------------------------------------------
+
+CLASS Student EXTENDS User
+    ATTRIBUTES:
+        enrolled_courses (list)
+
+    METHOD login()
+        IF username and password are valid AND student is enrolled
+            PRINT "Welcome student! Showing available exams..."
+        ELSE
+            PRINT "Access denied! Either invalid credentials or not enrolled."
+
+-----------------------------------------------------
+
+CLASS Admin EXTENDS User
+    ATTRIBUTES:
+        role = "Admin"
+
+    METHOD login()
+        IF username and password are valid AND role is Admin
+            PRINT "Welcome admin! You can now create or manage exams."
+        ELSE
+            PRINT "Access denied! You don’t have admin privileges."
+
+-----------------------------------------------------
+
+MAIN PROGRAM:
+    CREATE Student with username "john123", password "abc123", courses ["Math", "CS"]
+    Student.login()
+
+    CREATE Admin with username "profX", password "admin007"
+    Admin.login()
