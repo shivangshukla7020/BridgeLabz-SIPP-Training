@@ -1,0 +1,27 @@
+CLASS WordCounter
+    ATTRIBUTE:
+        wordCount = Map<String, Integer>
+
+    METHOD processText(paragraph)
+        STEP 1: Normalize text
+            - Convert to lowercase
+            - Remove punctuation
+        STEP 2: Split paragraph into words
+        STEP 3: For each word
+            IF wordCount contains word
+                increment count
+            ELSE
+                put word → 1
+
+    METHOD displaySorted()
+        SORT wordCount entries by value (descending)
+        PRINT each word and its frequency
+
+--------------------------------------------------
+
+MAIN PROGRAM:
+    INPUT paragraph = "The news today is about the rise in technology trends."
+
+    CREATE WordCounter
+    CALL processText(paragraph)
+    CALL displaySorted()
