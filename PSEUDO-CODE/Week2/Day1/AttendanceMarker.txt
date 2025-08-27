@@ -1,0 +1,29 @@
+CLASS AttendanceSystem
+    ATTRIBUTE:
+        records[students][days]   // 2D Array, rows = students, cols = days
+
+    METHOD markAttendance(studentId, day, status)   // status = 'P' or 'A'
+        records[studentId][day] = status
+        PRINT "Marked", status, "for Student", studentId, "on Day", day
+
+    METHOD updateAttendance(studentId, day, newStatus)
+        records[studentId][day] = newStatus
+        PRINT "Updated attendance to", newStatus, "for Student", studentId, "on Day", day
+
+    METHOD generateReport(studentId)
+        count = 0
+        FOR each day in records[studentId]
+            IF status == 'P'
+                count++
+        PRINT "Student", studentId, "was present", count, "days this month."
+
+--------------------------------------------------
+
+MAIN PROGRAM:
+    CREATE AttendanceSystem for 5 students, 30 days
+
+    Teacher marks attendance:
+        Student 1: Day 1 = P, Day 2 = P, Day 3 = A ...
+
+    Teacher updates Day 3 from A → P
+    At month’s end → Generate report for Student 1

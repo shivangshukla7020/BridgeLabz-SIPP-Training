@@ -1,0 +1,52 @@
+CLASS BusStop
+    ATTRIBUTES:
+        name
+        next (points to the next BusStop in the route)
+
+--------------------------------------------------
+
+CLASS BusRoute
+    ATTRIBUTE:
+        head (the first stop in the route)
+
+    METHOD addStop(afterStopName, newStopName)
+        FIND the stop with name = afterStopName
+        IF found
+            CREATE newStop
+            LINK newStop.next to currentStop.next
+            LINK currentStop.next to newStop
+            PRINT "Added", newStopName, "after", afterStopName
+        ELSE
+            PRINT "Stop not found!"
+
+    METHOD removeStop(stopName)
+        FIND the stop whose next has name = stopName
+        IF found
+            LINK currentStop.next = currentStop.next.next
+            PRINT "Removed", stopName
+        ELSE
+            PRINT "Stop not found!"
+
+    METHOD searchStop(stopName)
+        START from head
+        WHILE not null
+            IF stop.name == stopName
+                PRINT stopName, "exists in the route"
+                RETURN
+        PRINT stopName, "not found!"
+
+    METHOD displayRoute()
+        START from head
+        PRINT all stops in order separated by arrows (→)
+
+--------------------------------------------------
+
+MAIN PROGRAM:
+    CREATE BusRoute
+    Insert initial stops: Depot → Main Street → City Mall → Hospital → Airport
+
+    DISPLAY route
+    ADD University after City Mall
+    REMOVE Hospital
+    DISPLAY route
+    SEARCH for Airport
