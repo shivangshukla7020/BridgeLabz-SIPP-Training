@@ -1,0 +1,37 @@
+class SurveyResponse
+    restaurant
+    rating
+
+function generateReport(responses)
+    group = {}
+    for r in responses
+        if group has r.restaurant
+            group[r.restaurant].add(r.rating)
+        else
+            group[r.restaurant] = [r.rating]
+
+    avgMap = {}
+    for rest in group
+        list = group[rest]
+        avg = sum(list) / size(list)
+        avgMap[rest] = avg
+
+    best = restaurant with highest avg
+    worst = restaurant with lowest avg
+
+    print avgMap
+    print best
+    print worst
+end
+
+main
+   responses = [
+      SurveyResponse("PizzaHut",4),
+      SurveyResponse("PizzaHut",5),
+      SurveyResponse("KFC",3),
+      SurveyResponse("KFC",4),
+      SurveyResponse("Subway",5),
+      SurveyResponse("Subway",4),
+      SurveyResponse("Subway",5)
+   ]
+   generateReport(responses)

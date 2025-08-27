@@ -1,0 +1,26 @@
+function wordCounter(text)
+    words = split text by space
+    cleaned = []
+    for w in words
+        w = lowercase(w)
+        w = removePunct(w)
+        cleaned.add(w)
+
+    map = {}
+    for w in cleaned
+        if map has w
+            map[w] = map[w] + 1
+        else
+            map[w] = 1
+
+    maxWord = find word with max count
+    rare = all words with count = 1
+
+    print map
+    print maxWord
+    print rare
+end
+
+main
+   t = "Sports bring people together. Sports inspire teamwork. Sports create leaders."
+   wordCounter(t)
