@@ -1,0 +1,39 @@
+CLASS User
+    ATTRIBUTES:
+        username
+        password
+    METHOD login()
+        PRINT "Generic user login - override in subclasses"
+
+-------------------------------------------------
+
+CLASS Student EXTENDS User
+    ATTRIBUTES:
+        enrolledCourse (boolean)
+    METHOD login()
+        IF username and password are valid AND enrolledCourse == true
+            PRINT "Student login successful. Showing exams..."
+        ELSE
+            PRINT "Login failed! Student not registered or not enrolled."
+
+-------------------------------------------------
+
+CLASS Admin EXTENDS User
+    ATTRIBUTES:
+        adminPrivileges (boolean)
+    METHOD login()
+        IF username and password are valid AND adminPrivileges == true
+            PRINT "Admin login successful. Showing exam management tools..."
+        ELSE
+            PRINT "Login failed! Not an authorized admin."
+
+-------------------------------------------------
+
+MAIN PROGRAM
+    CREATE Student user1("john123", "pass123", enrolledCourse=true)
+    CALL user1.login()
+        → Output: "Student login successful. Showing exams..."
+
+    CREATE Admin admin1("adminX", "root123", adminPrivileges=true)
+    CALL admin1.login()
+        → Output: "Admin login successful. Showing exam management tools..."

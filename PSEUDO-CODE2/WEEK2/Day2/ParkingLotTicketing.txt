@@ -1,0 +1,44 @@
+CLASS Vehicle
+    ATTRIBUTES:
+        vehicleNumber
+        entryTime
+    METHOD calculateFee(exitTime)
+        PRINT "Generic fee calculation (override in subclasses)"
+
+-------------------------------------------------
+
+CLASS Car EXTENDS Vehicle
+    METHOD calculateFee(exitTime)
+        hours = ceil(exitTime - entryTime in hours)
+        fee = 50 + (hours - 1) * 30
+        RETURN fee
+
+CLASS Bike EXTENDS Vehicle
+    METHOD calculateFee(exitTime)
+        hours = ceil(exitTime - entryTime in hours)
+        fee = 20 + (hours - 1) * 10
+        RETURN fee
+
+CLASS Truck EXTENDS Vehicle
+    METHOD calculateFee(exitTime)
+        hours = ceil(exitTime - entryTime in hours)
+        fee = 100 + (hours - 1) * 50
+        RETURN fee
+
+-------------------------------------------------
+
+MAIN PROGRAM:
+    CREATE Car c1("KA05AB1234", 10:00)
+    CREATE Bike b1("KA05XY7890", 11:15)
+    CREATE Truck t1("KA09TR5566", 09:30)
+
+    EXIT c1 at 13:30
+        Fee = 50 + (2.5 hrs → ceil=3-1=2 * 30) = 110   <-- careful here
+    EXIT b1 at 12:00
+        Fee = 20 + (0.75 hr → ceil=1-1=0 * 10) = 20
+    EXIT t1 at 14:00
+        Fee = 100 + (4.5 hrs → ceil=5-1=4 * 50) = 300
+
+-------------------------------------------------
+(Exact fee depends on whether you use ceil/round/truncate. 
+Pseudo says "round up" → so ceil is used.)
