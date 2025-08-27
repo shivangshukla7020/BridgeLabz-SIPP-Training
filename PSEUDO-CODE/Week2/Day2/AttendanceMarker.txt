@@ -1,0 +1,34 @@
+CLASS AttendanceSystem
+    INTEGER[][] attendance   // rows = students, cols = days
+
+    METHOD markAttendance(student, day, status)
+        attendance[student][day] = status   // 1 = Present, 0 = Absent
+
+    METHOD dailySummary(day)
+        count = 0
+        FOR each student in attendance
+            IF attendance[student][day] == 1
+                count++
+        PRINT "Students present on Day", day, "=", count
+
+    METHOD monthlySummary(student)
+        total = 0
+        FOR each day in attendance[student]
+            total += attendance[student][day]
+        PRINT "Student", student, "present days =", total
+
+    METHOD defaulterList()
+        FOR each student
+            total = 0
+            FOR each day in attendance[student]
+                total += attendance[student][day]
+            IF total < 0.75 * totalDays
+                PRINT "Defaulter: Student", student
+
+MAIN
+    system = AttendanceSystem(30 students, 30 days)
+    system.markAttendance(1, 1, 1)   // Student 1 present Day 1
+    system.markAttendance(3, 1, 0)   // Student 3 absent Day 1
+    system.dailySummary(10)
+    system.monthlySummary(5)
+    system.defaulterList()

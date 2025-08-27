@@ -1,0 +1,56 @@
+CLASS Node
+    STRING stopName
+    Node next
+
+CLASS BusRoute
+    Node head
+
+    METHOD insertStop(afterStop, newStop)
+        current = head
+        WHILE current != NULL
+            IF current.stopName == afterStop
+                newNode = Node(newStop)
+                newNode.next = current.next
+                current.next = newNode
+                BREAK
+            ENDIF
+            current = current.next
+        ENDWHILE
+
+    METHOD deleteStop(stopName)
+        IF head == NULL RETURN
+        IF head.stopName == stopName
+            head = head.next
+            RETURN
+        current = head
+        WHILE current.next != NULL
+            IF current.next.stopName == stopName
+                current.next = current.next.next
+                BREAK
+            ENDIF
+            current = current.next
+        ENDWHILE
+
+    METHOD searchStop(stopName)
+        current = head
+        WHILE current != NULL
+            IF current.stopName == stopName
+                PRINT "Stop Found"
+                RETURN
+            ENDIF
+            current = current.next
+        ENDWHILE
+        PRINT "Stop Not Found"
+
+MAIN
+    route = BusRoute()
+    // Initial route: Depot → Main Street → City Mall → Hospital → Airport
+    route.head = Node("Depot")
+    route.head.next = Node("Main Street")
+    route.head.next.next = Node("City Mall")
+    route.head.next.next.next = Node("Hospital")
+    route.head.next.next.next.next = Node("Airport")
+
+    route.insertStop("City Mall", "University")
+    route.deleteStop("Hospital")
+    route.searchStop("Airport")
